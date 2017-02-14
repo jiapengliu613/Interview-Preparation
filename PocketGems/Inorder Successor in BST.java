@@ -20,8 +20,21 @@ public class Solution {
         
         
         
-        
-        
+        //follow up : with parent node
+
+        if (root == null) {
+            return root;
+        }
+        if (p.right != null) {
+            return findMin(p.right);
+        }
+        TreeNode parent = p.parent;
+        // with value : while (parent != null && p.val > parent.val)
+        while (parent != null && parent.right == p) {
+            p = parent;
+            parent = p.parent;
+        }
+        return p;
         /*
         if (root == null) {
             return root;
